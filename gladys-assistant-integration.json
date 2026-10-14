@@ -9,9 +9,9 @@
     "es": "Sus vehículos Ford en Gladys: combustible, batería, cierre, neumáticos, posición y órdenes."
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/gboulvin/fordpass:1.0.0",
+  "docker_image": "ghcr.io/gboulvin/gladys-fordpass:1.0.0",
   "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/gboulvin/FordPass/main/cover.png",
+  "cover_image": "https://raw.githubusercontent.com/gboulvin/Gladys-FordPass/main/cover.png",
   "categories": ["energy", "security", "services"],
   "transports": ["cloud"],
   "config_schema": [
@@ -32,7 +32,7 @@
       },
       "links": [
         {
-          "url": "https://github.com/gboulvin/FordPass/blob/main/docs/en.md",
+          "url": "https://github.com/gboulvin/Gladys-FordPass/blob/main/docs/en.md",
           "label": {
             "en": "Step-by-step guide",
             "fr": "Guide pas à pas",

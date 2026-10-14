@@ -99,7 +99,7 @@ Describe the changes under `## [Unreleased]` in [`CHANGELOG.md`](CHANGELOG.md),
 then **Actions → Release → Run workflow** (`patch`, `minor` or `major`): the
 workflow bumps `package.json` and the manifest, rolls the changelog, tags,
 builds the `linux/amd64` + `linux/arm64` image to
-`ghcr.io/gboulvin/fordpass` and publishes the GitHub Release. The GitHub
+`ghcr.io/gboulvin/gladys-fordpass` and publishes the GitHub Release. The GitHub
 topic `gladys-assistant-integration` makes the store index it, and the
 container package must be **public** so Gladys can pull it.
 
