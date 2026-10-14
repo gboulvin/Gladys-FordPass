@@ -25,23 +25,32 @@ l'adresse finale à la main. Cela prend deux minutes, une seule fois.
 
 1. Dans Gladys, ouvrez l'onglet **Configuration** de l'intégration et
    choisissez la **région** de votre compte FordPass. Enregistrez.
-2. Ouvrez les **outils de développement** du navigateur (`F12`, ou
-   `Ctrl+Maj+I` / `Cmd+Option+I` sur Mac) et sélectionnez l'onglet
-   **Réseau**. Laissez-le ouvert.
-3. Cliquez sur **Connecter** à côté de _Compte Ford_. La page de connexion
-   Ford s'ouvre : connectez-vous avec l'e-mail et le mot de passe de votre
-   compte FordPass (et le code envoyé par Ford, s'il est demandé).
-4. La page semble alors charger indéfiniment : c'est normal. Dans l'onglet
-   **Réseau**, trouvez la requête dont l'adresse commence par
-   `fordapp://userauthorized/?code=` (tapez `code=` dans le filtre). Clic
-   droit → **Copier** → **Copier l'URL**. Dans Firefox, l'adresse peut
-   apparaître plutôt dans la console sous forme d'erreur (« ouverture
-   empêchée ») : copiez-la depuis là.
-5. De retour dans Gladys, lancez l'action **Terminer la connexion** et collez
+2. Cliquez sur **Connecter** à côté de _Compte Ford_. La page de connexion
+   Ford s'ouvre dans un nouvel onglet. Ne vous y connectez pas : copiez
+   l'adresse de cette page depuis la barre d'adresse, puis fermez l'onglet.
+3. Ouvrez un nouvel onglet, ouvrez les **outils de développement** du
+   navigateur (`F12`, ou `Ctrl+Maj+I` / `Cmd+Option+I` sur Mac), sélectionnez
+   l'onglet **Réseau** et cochez **Conserver le journal** (Firefox : ⚙ →
+   **Journaux persistants**). Les outils de développement n'enregistrent que
+   l'onglet où ils ont été ouverts, et la connexion passe par plusieurs pages
+   (dont celle du code de vérification) : sans cette case, la liste est vidée
+   en route.
+4. Collez l'adresse copiée dans la barre d'adresse de cet onglet et validez
+   avec `Entrée`. Connectez-vous avec l'e-mail et le mot de passe de votre
+   compte FordPass, puis saisissez le code de vérification envoyé par Ford
+   (double authentification).
+5. La page semble alors charger indéfiniment : c'est normal. Dans l'onglet
+   **Réseau**, la dernière requête s'affiche **en rouge** ; son initiateur est
+   `authorize?redirect_uri=fordapp://userauthorized&…` et son adresse
+   commence par `fordapp://userauthorized/?code=` (tapez `code=` dans le
+   filtre pour la trouver). Clic droit → **Copier** → **Copier l'URL**. Dans
+   Firefox, l'adresse peut apparaître plutôt dans la console sous forme
+   d'erreur (« ouverture empêchée ») : copiez-la depuis là.
+6. De retour dans Gladys, lancez l'action **Terminer la connexion** et collez
    l'adresse. Faites-le tout de suite : le code n'est valable que quelques
    minutes, et la connexion doit être terminée dans les 10 minutes suivant le
    clic sur **Connecter**.
-6. La réponse liste les véhicules trouvés. Ouvrez l'onglet **Découverte** et
+7. La réponse liste les véhicules trouvés. Ouvrez l'onglet **Découverte** et
    ajoutez-les.
 
 Votre mot de passe ne transite jamais par Gladys : l'intégration ne reçoit

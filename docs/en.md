@@ -23,21 +23,29 @@ takes two minutes, once.
 
 1. In Gladys, open the integration's **Configuration** tab and pick the
    **region** your FordPass account belongs to. Save.
-2. Open your browser's **developer tools** (`F12`, or `Ctrl+Shift+I` /
-   `Cmd+Option+I` on a Mac) and select the **Network** tab. Keep it open.
-3. Click **Connect** next to _Ford account_. Ford's sign-in page opens: sign
-   in with your FordPass email and password (and the code Ford sends, if
-   asked).
-4. The page then seems to load forever: that is expected. In the **Network**
-   tab, find the request whose address starts with
-   `fordapp://userauthorized/?code=` (type `code=` in the filter box). Right
-   click it → **Copy** → **Copy URL**. In Firefox, the address may show in
-   the console as an error ("prevented from opening") instead: copy it
-   from there.
-5. Back in Gladys, run the **Complete the sign-in** action and paste the
+2. Click **Connect** next to _Ford account_. Ford's sign-in page opens in a
+   new tab. Do not sign in there: copy the address of that page from the
+   address bar, then close the tab.
+3. Open a new tab, open the browser's **developer tools** (`F12`, or
+   `Ctrl+Shift+I` / `Cmd+Option+I` on a Mac), select the **Network** tab and
+   tick **Preserve log** (Firefox: ⚙ → **Persist Logs**). The developer tools
+   only record the tab they were opened in, and the sign-in goes through
+   several pages (the verification code among them): without this box, the
+   list is emptied on the way.
+4. Paste the copied address into the address bar of this tab and press
+   `Enter`. Sign in with your FordPass email and password, then enter the
+   verification code Ford sends you (two-factor authentication).
+5. The page then seems to load forever: that is expected. In the **Network**
+   tab, the last request is shown **in red**; its initiator is
+   `authorize?redirect_uri=fordapp://userauthorized&…` and its address starts
+   with `fordapp://userauthorized/?code=` (type `code=` in the filter box to
+   find it). Right click it → **Copy** → **Copy URL**. In Firefox, the
+   address may show in the console as an error ("prevented from opening")
+   instead: copy it from there.
+6. Back in Gladys, run the **Complete the sign-in** action and paste the
    address. Do it right away: the code is only valid a few minutes, and the
    sign-in must be completed within 10 minutes of the click on **Connect**.
-6. The answer lists the vehicles found. Open the **Discovery** tab and add
+7. The answer lists the vehicles found. Open the **Discovery** tab and add
    them.
 
 Your password never reaches Gladys: the integration only receives a one-time

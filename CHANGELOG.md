@@ -10,6 +10,13 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+### Changed
+
+- Sign-in guide (documentation and configuration screen) updated for Ford's
+  two-factor authentication: open the sign-in address in a tab whose
+  developer tools record with "Preserve log" ticked, then copy the red
+  `fordapp://userauthorized/?code=` request.
+
 ## [1.0.2] - 2026-10-14
 
 ## [1.0.1] - 2026-10-14

@@ -25,23 +25,33 @@ dirección final a mano. Lleva dos minutos, una sola vez.
 
 1. En Gladys, abra la pestaña **Configuración** de la integración y elija la
    **región** de su cuenta FordPass. Guarde.
-2. Abra las **herramientas de desarrollo** del navegador (`F12`, o
-   `Ctrl+Mayús+I` / `Cmd+Opción+I` en Mac) y seleccione la pestaña **Red**.
-   Déjela abierta.
-3. Pulse **Conectar** junto a _Cuenta Ford_. Se abre la página de inicio de
-   sesión de Ford: inicie sesión con el correo y la contraseña de su cuenta
-   FordPass (y el código que envía Ford, si lo pide).
-4. La página parece cargar indefinidamente: es lo esperado. En la pestaña
-   **Red**, busque la petición cuya dirección empieza por
-   `fordapp://userauthorized/?code=` (escriba `code=` en el filtro). Clic
-   derecho → **Copiar** → **Copiar URL**. En Firefox, la dirección puede
-   aparecer en la consola como un error («se impidió abrir»): cópiela desde
-   ahí.
-5. De vuelta en Gladys, ejecute la acción **Completar el inicio de sesión** y
+2. Pulse **Conectar** junto a _Cuenta Ford_. La página de inicio de sesión de
+   Ford se abre en una pestaña nueva. No inicie sesión ahí: copie la
+   dirección de esa página desde la barra de direcciones y cierre la
+   pestaña.
+3. Abra una pestaña nueva, abra las **herramientas de desarrollo** del
+   navegador (`F12`, o `Ctrl+Mayús+I` / `Cmd+Opción+I` en Mac), seleccione la
+   pestaña **Red** y marque **Conservar registro** (Firefox: ⚙ → **Persistir
+   registros**). Las herramientas de desarrollo solo registran la pestaña en
+   la que se abrieron, y el inicio de sesión pasa por varias páginas (entre
+   ellas la del código de verificación): sin esta casilla, la lista se vacía
+   por el camino.
+4. Pegue la dirección copiada en la barra de direcciones de esta pestaña y
+   pulse `Intro`. Inicie sesión con el correo y la contraseña de su cuenta
+   FordPass y luego introduzca el código de verificación que le envía Ford
+   (autenticación de dos factores).
+5. La página parece cargar indefinidamente: es lo esperado. En la pestaña
+   **Red**, la última petición aparece **en rojo**; su iniciador es
+   `authorize?redirect_uri=fordapp://userauthorized&…` y su dirección empieza
+   por `fordapp://userauthorized/?code=` (escriba `code=` en el filtro para
+   encontrarla). Clic derecho → **Copiar** → **Copiar URL**. En Firefox, la
+   dirección puede aparecer en la consola como un error («se impidió
+   abrir»): cópiela desde ahí.
+6. De vuelta en Gladys, ejecute la acción **Completar el inicio de sesión** y
    pegue la dirección. Hágalo enseguida: el código solo es válido unos
    minutos, y el inicio de sesión debe completarse en los 10 minutos
    siguientes al clic en **Conectar**.
-6. La respuesta lista los vehículos encontrados. Abra la pestaña
+7. La respuesta lista los vehículos encontrados. Abra la pestaña
    **Descubrimiento** y añádalos.
 
 Su contraseña nunca pasa por Gladys: la integración solo recibe un código de
