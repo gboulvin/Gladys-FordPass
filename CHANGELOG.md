@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-14
+
 ### Added
 
 - Sign-in to a FordPass account on Ford's own page (OAuth2 + PKCE, the
@@ -35,4 +37,5 @@ the notes of the version's GitHub Release.
   (bar / kPa / psi), low level threshold and language of the feature names.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/gboulvin/FordPass/commits/main
+[Unreleased]: https://github.com/gboulvin/FordPass/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/gboulvin/FordPass/releases/tag/v1.0.0
