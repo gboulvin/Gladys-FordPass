@@ -74,7 +74,7 @@ test('the integration is cloud only', () => {
 
 test('the manifest version is the package version, and the image is tagged with it', () => {
   assert.equal(manifest.version, pkg.version);
-  assert.equal(manifest.docker_image, `ghcr.io/gboulvin/fordpass:${manifest.version}`);
+  assert.equal(manifest.docker_image, `ghcr.io/gboulvin/gladys-fordpass:${manifest.version}`);
 });
 
 test('scene triggers, scene actions and widgets require Gladys >= 5.1.0', () => {
