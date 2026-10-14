@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-14
+
 ### Changed
 
 - The project moved to https://github.com/gboulvin/Gladys-FordPass: the
@@ -42,5 +44,6 @@ the notes of the version's GitHub Release.
   (bar / kPa / psi), low level threshold and language of the feature names.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/gboulvin/Gladys-FordPass/releases/tag/v1.0.0
