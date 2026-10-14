@@ -1,0 +1,1024 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "FordPass",
+  "description": {
+    "en": "Your Ford vehicles in Gladys: fuel, battery, locks, tires, position and remote commands.",
+    "fr": "Vos véhicules Ford dans Gladys : carburant, batterie, verrouillage, pneus, position, commandes.",
+    "de": "Ihre Ford-Fahrzeuge in Gladys: Tank, Akku, Schloss, Reifen, Position und Fernbefehle.",
+    "es": "Sus vehículos Ford en Gladys: combustible, batería, cierre, neumáticos, posición y órdenes."
+  },
+  "version": "0.0.0",
+  "docker_image": "ghcr.io/gboulvin/fordpass:0.0.0",
+  "gladys_version": ">=5.1.0",
+  "cover_image": "https://raw.githubusercontent.com/gboulvin/FordPass/main/cover.png",
+  "categories": ["energy", "security", "services"],
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Connect your FordPass account",
+        "fr": "Connecter votre compte FordPass",
+        "de": "FordPass-Konto verbinden",
+        "es": "Conectar su cuenta FordPass"
+      },
+      "description": {
+        "en": "1. Pick your region. 2. Click Connect: Ford's sign-in page opens, sign in with your FordPass account, browser developer tools (F12, Network tab) open. 3. The page never finishes loading: copy the address starting with fordapp://userauthorized/?code= and paste it into the \"Complete the sign-in\" action below. Your password never reaches Gladys.",
+        "fr": "1. Choisissez votre région. 2. Cliquez sur Connecter : la page de connexion Ford s'ouvre, connectez-vous avec votre compte FordPass, les outils de développement du navigateur (F12, onglet Réseau) ouverts. 3. La page ne finit jamais de charger : copiez l'adresse qui commence par fordapp://userauthorized/?code= et collez-la dans l'action « Terminer la connexion » ci-dessous. Votre mot de passe ne transite jamais par Gladys.",
+        "de": "1. Wählen Sie Ihre Region. 2. Klicken Sie auf Verbinden: Die Ford-Anmeldeseite öffnet sich, melden Sie sich mit Ihrem FordPass-Konto an, die Entwicklertools des Browsers (F12, Tab Netzwerk) geöffnet. 3. Die Seite lädt nie fertig: Kopieren Sie die Adresse, die mit fordapp://userauthorized/?code= beginnt, und fügen Sie sie in die Aktion „Anmeldung abschließen“ unten ein. Ihr Passwort erreicht Gladys nie.",
+        "es": "1. Elija su región. 2. Pulse Conectar: se abre la página de inicio de sesión de Ford; inicie sesión con su cuenta FordPass con las herramientas de desarrollo del navegador (F12, pestaña Red) abiertas. 3. La página nunca termina de cargar: copie la dirección que empieza por fordapp://userauthorized/?code= y péguela en la acción «Completar el inicio de sesión» de abajo. Su contraseña nunca pasa por Gladys."
+      },
+      "links": [
+        {
+          "url": "https://github.com/gboulvin/FordPass/blob/main/docs/en.md",
+          "label": {
+            "en": "Step-by-step guide",
+            "fr": "Guide pas à pas",
+            "de": "Schritt-für-Schritt-Anleitung",
+            "es": "Guía paso a paso"
+          }
+        }
+      ]
+    },
+    {
+      "key": "region",
+      "type": "select",
+      "label": {
+        "en": "FordPass account region",
+        "fr": "Région du compte FordPass",
+        "de": "Region des FordPass-Kontos",
+        "es": "Región de la cuenta FordPass"
+      },
+      "description": {
+        "en": "The country where your FordPass account was created.",
+        "fr": "Le pays où votre compte FordPass a été créé.",
+        "de": "Das Land, in dem Ihr FordPass-Konto erstellt wurde.",
+        "es": "El país donde se creó su cuenta FordPass."
+      },
+      "required": true,
+      "default": "fra",
+      "options": [
+        {
+          "value": "fra",
+          "label": {
+            "en": "France",
+            "fr": "France",
+            "de": "Frankreich",
+            "es": "Francia"
+          }
+        },
+        {
+          "value": "deu",
+          "label": {
+            "en": "Germany",
+            "fr": "Allemagne",
+            "de": "Deutschland",
+            "es": "Alemania"
+          }
+        },
+        {
+          "value": "esp",
+          "label": {
+            "en": "Spain",
+            "fr": "Espagne",
+            "de": "Spanien",
+            "es": "España"
+          }
+        },
+        {
+          "value": "ita",
+          "label": {
+            "en": "Italy",
+            "fr": "Italie",
+            "de": "Italien",
+            "es": "Italia"
+          }
+        },
+        {
+          "value": "nld",
+          "label": {
+            "en": "Netherlands",
+            "fr": "Pays-Bas",
+            "de": "Niederlande",
+            "es": "Países Bajos"
+          }
+        },
+        {
+          "value": "gbr",
+          "label": {
+            "en": "United Kingdom",
+            "fr": "Royaume-Uni",
+            "de": "Vereinigtes Königreich",
+            "es": "Reino Unido"
+          }
+        },
+        {
+          "value": "rest_of_europe",
+          "label": {
+            "en": "Rest of Europe",
+            "fr": "Reste de l'Europe",
+            "de": "Übriges Europa",
+            "es": "Resto de Europa"
+          }
+        },
+        {
+          "value": "usa",
+          "label": {
+            "en": "United States",
+            "fr": "États-Unis",
+            "de": "Vereinigte Staaten",
+            "es": "Estados Unidos"
+          }
+        },
+        {
+          "value": "can",
+          "label": {
+            "en": "Canada",
+            "fr": "Canada",
+            "de": "Kanada",
+            "es": "Canadá"
+          }
+        }
+      ]
+    },
+    {
+      "key": "ford_account",
+      "type": "account_link",
+      "label": {
+        "en": "Ford account",
+        "fr": "Compte Ford",
+        "de": "Ford-Konto",
+        "es": "Cuenta Ford"
+      },
+      "description": {
+        "en": "Opens the Ford sign-in page. Then run \"Complete the sign-in\".",
+        "fr": "Ouvre la page de connexion Ford. Lancez ensuite « Terminer la connexion ».",
+        "de": "Öffnet die Ford-Anmeldeseite. Führen Sie danach „Anmeldung abschließen“ aus.",
+        "es": "Abre la página de inicio de sesión de Ford. Después ejecute «Completar el inicio de sesión»."
+      }
+    },
+    {
+      "key": "poll_frequency",
+      "type": "number",
+      "label": {
+        "en": "Refresh interval (s)",
+        "fr": "Intervalle de rafraîchissement (s)",
+        "de": "Aktualisierungsintervall (s)",
+        "es": "Intervalo de actualización (s)"
+      },
+      "description": {
+        "en": "How often each vehicle is read, in seconds (one minute minimum). Reading never wakes the car up.",
+        "fr": "Fréquence de lecture de chaque véhicule, en secondes (une minute minimum). La lecture ne réveille jamais la voiture.",
+        "de": "Wie oft jedes Fahrzeug gelesen wird, in Sekunden (mindestens eine Minute). Das Lesen weckt das Auto nie auf.",
+        "es": "Frecuencia de lectura de cada vehículo, en segundos (mínimo un minuto). La lectura nunca despierta el coche."
+      },
+      "required": false,
+      "default": 300,
+      "min": 60,
+      "max": 3600
+    },
+    {
+      "key": "distance_unit",
+      "type": "select",
+      "label": {
+        "en": "Distance unit",
+        "fr": "Unité de distance",
+        "de": "Entfernungseinheit",
+        "es": "Unidad de distancia"
+      },
+      "required": false,
+      "default": "km",
+      "options": [
+        {
+          "value": "km",
+          "label": {
+            "en": "Kilometers",
+            "fr": "Kilomètres",
+            "de": "Kilometer",
+            "es": "Kilómetros"
+          }
+        },
+        {
+          "value": "mi",
+          "label": {
+            "en": "Miles",
+            "fr": "Miles",
+            "de": "Meilen",
+            "es": "Millas"
+          }
+        }
+      ]
+    },
+    {
+      "key": "pressure_unit",
+      "type": "select",
+      "label": {
+        "en": "Tire pressure unit",
+        "fr": "Unité de pression des pneus",
+        "de": "Einheit des Reifendrucks",
+        "es": "Unidad de presión de neumáticos"
+      },
+      "required": false,
+      "default": "bar",
+      "options": [
+        {
+          "value": "bar",
+          "label": {
+            "en": "bar",
+            "fr": "bar",
+            "de": "bar",
+            "es": "bar"
+          }
+        },
+        {
+          "value": "kpa",
+          "label": {
+            "en": "kPa",
+            "fr": "kPa",
+            "de": "kPa",
+            "es": "kPa"
+          }
+        },
+        {
+          "value": "psi",
+          "label": {
+            "en": "psi",
+            "fr": "psi",
+            "de": "psi",
+            "es": "psi"
+          }
+        }
+      ]
+    },
+    {
+      "key": "low_level_threshold",
+      "type": "number",
+      "label": {
+        "en": "Low fuel / battery threshold (%)",
+        "fr": "Seuil carburant / batterie bas (%)",
+        "de": "Schwelle niedriger Tank / Akku (%)",
+        "es": "Umbral de combustible / batería bajo (%)"
+      },
+      "description": {
+        "en": "Under this level the \"Low fuel or battery\" scene trigger fires.",
+        "fr": "Sous ce niveau, le déclencheur de scène « Carburant ou batterie bas » se lance.",
+        "de": "Unter diesem Wert löst der Szenen-Auslöser „Tank oder Akku niedrig“ aus.",
+        "es": "Por debajo de este nivel se activa el disparador «Combustible o batería bajos»."
+      },
+      "placeholder": {
+        "en": "e.g. 15",
+        "fr": "ex. 15",
+        "de": "z. B. 15",
+        "es": "p. ej. 15"
+      },
+      "required": false,
+      "default": 15,
+      "min": 1,
+      "max": 50
+    },
+    {
+      "key": "names_language",
+      "type": "select",
+      "label": {
+        "en": "Language of the feature names",
+        "fr": "Langue des noms de fonctionnalités",
+        "de": "Sprache der Funktionsnamen",
+        "es": "Idioma de los nombres de funciones"
+      },
+      "description": {
+        "en": "Used when a vehicle is added to Gladys.",
+        "fr": "Utilisée à l'ajout d'un véhicule dans Gladys.",
+        "de": "Wird beim Hinzufügen eines Fahrzeugs verwendet.",
+        "es": "Se usa al añadir un vehículo a Gladys."
+      },
+      "required": false,
+      "default": "en",
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "key": "complete_login",
+      "label": {
+        "en": "Complete the sign-in",
+        "fr": "Terminer la connexion",
+        "de": "Anmeldung abschließen",
+        "es": "Completar el inicio de sesión"
+      },
+      "description": {
+        "en": "Paste the fordapp://userauthorized/?code=… address copied after signing in.",
+        "fr": "Collez l'adresse fordapp://userauthorized/?code=… copiée après la connexion.",
+        "de": "Fügen Sie die nach der Anmeldung kopierte Adresse fordapp://userauthorized/?code=… ein.",
+        "es": "Pegue la dirección fordapp://userauthorized/?code=… copiada tras iniciar sesión."
+      },
+      "timeout_seconds": 60,
+      "fields": [
+        {
+          "key": "redirect_url",
+          "type": "string",
+          "label": {
+            "en": "Address after sign-in",
+            "fr": "Adresse après connexion",
+            "de": "Adresse nach der Anmeldung",
+            "es": "Dirección tras el inicio de sesión"
+          },
+          "placeholder": {
+            "en": "fordapp://userauthorized/?code=…",
+            "fr": "fordapp://userauthorized/?code=…",
+            "de": "fordapp://userauthorized/?code=…",
+            "es": "fordapp://userauthorized/?code=…"
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "key": "test_connection",
+      "label": {
+        "en": "Test the connection",
+        "fr": "Tester la connexion",
+        "de": "Verbindung testen",
+        "es": "Probar la conexión"
+      },
+      "timeout_seconds": 30
+    },
+    {
+      "key": "logout",
+      "label": {
+        "en": "Disconnect from Ford",
+        "fr": "Se déconnecter de Ford",
+        "de": "Von Ford abmelden",
+        "es": "Desconectar de Ford"
+      },
+      "description": {
+        "en": "Deletes the stored Ford tokens.",
+        "fr": "Supprime les jetons Ford enregistrés.",
+        "de": "Löscht die gespeicherten Ford-Tokens.",
+        "es": "Borra los tokens de Ford guardados."
+      }
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "low_energy",
+      "label": {
+        "en": "Low fuel or battery",
+        "fr": "Carburant ou batterie bas",
+        "de": "Tank oder Akku niedrig",
+        "es": "Combustible o batería bajos"
+      },
+      "description": {
+        "en": "The fuel or battery level of a vehicle went under the configured threshold.",
+        "fr": "Le niveau de carburant ou de batterie est passé sous le seuil configuré.",
+        "de": "Der Tank- oder Akkustand ist unter die eingestellte Schwelle gefallen.",
+        "es": "El nivel de combustible o batería bajó del umbral configurado."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          }
+        },
+        {
+          "key": "energy",
+          "type": "select",
+          "label": {
+            "en": "Energy",
+            "fr": "Énergie",
+            "de": "Energie",
+            "es": "Energía"
+          },
+          "options": [
+            {
+              "value": "fuel",
+              "label": {
+                "en": "Fuel",
+                "fr": "Carburant",
+                "de": "Kraftstoff",
+                "es": "Combustible"
+              }
+            },
+            {
+              "value": "battery",
+              "label": {
+                "en": "Battery",
+                "fr": "Batterie",
+                "de": "Akku",
+                "es": "Batería"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "energy",
+          "type": "string",
+          "label": {
+            "en": "Energy",
+            "fr": "Énergie",
+            "de": "Energie",
+            "es": "Energía"
+          }
+        },
+        {
+          "key": "level",
+          "type": "number",
+          "label": {
+            "en": "Level (%)",
+            "fr": "Niveau (%)",
+            "de": "Füllstand (%)",
+            "es": "Nivel (%)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "alarm_triggered",
+      "label": {
+        "en": "Alarm triggered",
+        "fr": "Alarme déclenchée",
+        "de": "Alarm ausgelöst",
+        "es": "Alarma disparada"
+      },
+      "description": {
+        "en": "The anti-theft alarm of a vehicle went off.",
+        "fr": "L'alarme antivol d'un véhicule s'est déclenchée.",
+        "de": "Die Diebstahlwarnanlage eines Fahrzeugs wurde ausgelöst.",
+        "es": "La alarma antirrobo de un vehículo se ha disparado."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "latitude",
+          "type": "number",
+          "label": {
+            "en": "Latitude",
+            "fr": "Latitude",
+            "de": "Breitengrad",
+            "es": "Latitud"
+          }
+        },
+        {
+          "key": "longitude",
+          "type": "number",
+          "label": {
+            "en": "Longitude",
+            "fr": "Longitude",
+            "de": "Längengrad",
+            "es": "Longitud"
+          }
+        }
+      ]
+    },
+    {
+      "key": "tire_pressure_warning",
+      "label": {
+        "en": "Tire pressure warning",
+        "fr": "Alerte pression des pneus",
+        "de": "Reifendruckwarnung",
+        "es": "Aviso de presión de neumáticos"
+      },
+      "description": {
+        "en": "The tire pressure monitoring flagged a wheel.",
+        "fr": "La surveillance de pression a signalé une roue.",
+        "de": "Die Reifendruckkontrolle hat ein Rad gemeldet.",
+        "es": "El control de presión ha señalado una rueda."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "wheel",
+          "type": "string",
+          "label": {
+            "en": "Wheel",
+            "fr": "Roue",
+            "de": "Rad",
+            "es": "Rueda"
+          }
+        },
+        {
+          "key": "pressure",
+          "type": "number",
+          "label": {
+            "en": "Pressure",
+            "fr": "Pression",
+            "de": "Druck",
+            "es": "Presión"
+          }
+        }
+      ]
+    },
+    {
+      "key": "charge_complete",
+      "label": {
+        "en": "Charging finished",
+        "fr": "Charge terminée",
+        "de": "Laden beendet",
+        "es": "Carga terminada"
+      },
+      "description": {
+        "en": "An electric or plug-in hybrid vehicle stopped charging.",
+        "fr": "Un véhicule électrique ou hybride rechargeable a fini de charger.",
+        "de": "Ein Elektro- oder Plug-in-Hybridfahrzeug hat das Laden beendet.",
+        "es": "Un vehículo eléctrico o híbrido enchufable ha dejado de cargar."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "level",
+          "type": "number",
+          "label": {
+            "en": "Battery (%)",
+            "fr": "Batterie (%)",
+            "de": "Akku (%)",
+            "es": "Batería (%)"
+          }
+        },
+        {
+          "key": "range",
+          "type": "number",
+          "label": {
+            "en": "Electric range",
+            "fr": "Autonomie électrique",
+            "de": "Elektrische Reichweite",
+            "es": "Autonomía eléctrica"
+          }
+        }
+      ]
+    },
+    {
+      "key": "ignition_changed",
+      "label": {
+        "en": "Ignition switched on or off",
+        "fr": "Contact mis ou coupé",
+        "de": "Zündung ein- oder ausgeschaltet",
+        "es": "Contacto encendido o apagado"
+      },
+      "description": {
+        "en": "A vehicle was started or switched off (trip start or end).",
+        "fr": "Un véhicule a été démarré ou arrêté (début ou fin de trajet).",
+        "de": "Ein Fahrzeug wurde gestartet oder abgestellt (Fahrtbeginn oder -ende).",
+        "es": "Un vehículo se ha arrancado o apagado (inicio o fin de trayecto)."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          }
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "label": {
+            "en": "Ignition",
+            "fr": "Contact",
+            "de": "Zündung",
+            "es": "Contacto"
+          },
+          "options": [
+            {
+              "value": "on",
+              "label": {
+                "en": "Switched on",
+                "fr": "Mis",
+                "de": "Eingeschaltet",
+                "es": "Encendido"
+              }
+            },
+            {
+              "value": "off",
+              "label": {
+                "en": "Switched off",
+                "fr": "Coupé",
+                "de": "Ausgeschaltet",
+                "es": "Apagado"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "Ignition",
+            "fr": "Contact",
+            "de": "Zündung",
+            "es": "Contacto"
+          }
+        },
+        {
+          "key": "odometer",
+          "type": "number",
+          "label": {
+            "en": "Odometer",
+            "fr": "Kilométrage",
+            "de": "Kilometerstand",
+            "es": "Cuentakilómetros"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "vehicle_command",
+      "label": {
+        "en": "Send a command to a Ford vehicle",
+        "fr": "Envoyer une commande à un véhicule Ford",
+        "de": "Befehl an ein Ford-Fahrzeug senden",
+        "es": "Enviar una orden a un vehículo Ford"
+      },
+      "description": {
+        "en": "Lock, unlock, remote start, charge… and wait for the vehicle's answer.",
+        "fr": "Verrouiller, déverrouiller, démarrer à distance, charger… et attendre la réponse du véhicule.",
+        "de": "Verriegeln, entriegeln, Fernstart, Laden… und auf die Antwort des Fahrzeugs warten.",
+        "es": "Bloquear, desbloquear, arranque remoto, carga… y esperar la respuesta del vehículo."
+      },
+      "timeout_seconds": 120,
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          },
+          "required": true
+        },
+        {
+          "key": "command",
+          "type": "select",
+          "label": {
+            "en": "Command",
+            "fr": "Commande",
+            "de": "Befehl",
+            "es": "Orden"
+          },
+          "required": true,
+          "default": "lock",
+          "options": [
+            {
+              "value": "lock",
+              "label": {
+                "en": "Lock",
+                "fr": "Verrouiller",
+                "de": "Verriegeln",
+                "es": "Bloquear"
+              }
+            },
+            {
+              "value": "unlock",
+              "label": {
+                "en": "Unlock",
+                "fr": "Déverrouiller",
+                "de": "Entriegeln",
+                "es": "Desbloquear"
+              }
+            },
+            {
+              "value": "remote_start",
+              "label": {
+                "en": "Remote start",
+                "fr": "Démarrage à distance",
+                "de": "Fernstart",
+                "es": "Arranque remoto"
+              }
+            },
+            {
+              "value": "cancel_remote_start",
+              "label": {
+                "en": "Stop remote start",
+                "fr": "Arrêter le démarrage à distance",
+                "de": "Fernstart stoppen",
+                "es": "Detener el arranque remoto"
+              }
+            },
+            {
+              "value": "start_charge",
+              "label": {
+                "en": "Start charging",
+                "fr": "Lancer la charge",
+                "de": "Laden starten",
+                "es": "Iniciar la carga"
+              }
+            },
+            {
+              "value": "stop_charge",
+              "label": {
+                "en": "Stop charging",
+                "fr": "Arrêter la charge",
+                "de": "Laden stoppen",
+                "es": "Detener la carga"
+              }
+            },
+            {
+              "value": "refresh",
+              "label": {
+                "en": "Refresh the data",
+                "fr": "Actualiser les données",
+                "de": "Daten aktualisieren",
+                "es": "Actualizar los datos"
+              }
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "key": "success",
+          "type": "boolean",
+          "label": {
+            "en": "Command succeeded",
+            "fr": "Commande réussie",
+            "de": "Befehl erfolgreich",
+            "es": "Orden realizada"
+          }
+        },
+        {
+          "key": "status",
+          "type": "string",
+          "label": {
+            "en": "Status",
+            "fr": "Statut",
+            "de": "Status",
+            "es": "Estado"
+          }
+        }
+      ]
+    },
+    {
+      "key": "vehicle_status",
+      "label": {
+        "en": "Read a Ford vehicle's status",
+        "fr": "Lire l'état d'un véhicule Ford",
+        "de": "Status eines Ford-Fahrzeugs lesen",
+        "es": "Leer el estado de un vehículo Ford"
+      },
+      "description": {
+        "en": "Last values known by Ford, usable by the next actions.",
+        "fr": "Dernières valeurs connues de Ford, utilisables par les actions suivantes.",
+        "de": "Letzte bei Ford bekannte Werte, nutzbar in den nächsten Aktionen.",
+        "es": "Últimos valores conocidos por Ford, utilizables en las acciones siguientes."
+      },
+      "timeout_seconds": 45,
+      "fields": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          },
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "key": "odometer",
+          "type": "number",
+          "label": {
+            "en": "Odometer",
+            "fr": "Kilométrage",
+            "de": "Kilometerstand",
+            "es": "Cuentakilómetros"
+          }
+        },
+        {
+          "key": "fuel_level",
+          "type": "number",
+          "label": {
+            "en": "Fuel level (%)",
+            "fr": "Niveau de carburant (%)",
+            "de": "Tankfüllstand (%)",
+            "es": "Nivel de combustible (%)"
+          }
+        },
+        {
+          "key": "battery_level",
+          "type": "number",
+          "label": {
+            "en": "Battery charge (%)",
+            "fr": "Charge de la batterie (%)",
+            "de": "Akkustand (%)",
+            "es": "Carga de la batería (%)"
+          }
+        },
+        {
+          "key": "range",
+          "type": "number",
+          "label": {
+            "en": "Range",
+            "fr": "Autonomie",
+            "de": "Reichweite",
+            "es": "Autonomía"
+          }
+        },
+        {
+          "key": "locked",
+          "type": "boolean",
+          "label": {
+            "en": "Locked",
+            "fr": "Verrouillé",
+            "de": "Verriegelt",
+            "es": "Bloqueado"
+          }
+        },
+        {
+          "key": "doors_open",
+          "type": "boolean",
+          "label": {
+            "en": "A door is open",
+            "fr": "Une porte est ouverte",
+            "de": "Eine Tür ist offen",
+            "es": "Hay una puerta abierta"
+          }
+        },
+        {
+          "key": "windows_open",
+          "type": "boolean",
+          "label": {
+            "en": "A window is open",
+            "fr": "Une vitre est ouverte",
+            "de": "Ein Fenster ist offen",
+            "es": "Hay una ventanilla abierta"
+          }
+        },
+        {
+          "key": "charging",
+          "type": "boolean",
+          "label": {
+            "en": "Charging",
+            "fr": "En charge",
+            "de": "Lädt",
+            "es": "Cargando"
+          }
+        },
+        {
+          "key": "latitude",
+          "type": "number",
+          "label": {
+            "en": "Latitude",
+            "fr": "Latitude",
+            "de": "Breitengrad",
+            "es": "Latitud"
+          }
+        },
+        {
+          "key": "longitude",
+          "type": "number",
+          "label": {
+            "en": "Longitude",
+            "fr": "Longitude",
+            "de": "Längengrad",
+            "es": "Longitud"
+          }
+        }
+      ]
+    }
+  ],
+  "widgets": [
+    {
+      "key": "vehicle_overview",
+      "label": {
+        "en": "Ford vehicle",
+        "fr": "Véhicule Ford",
+        "de": "Ford-Fahrzeug",
+        "es": "Vehículo Ford"
+      },
+      "description": {
+        "en": "Energy, range, locks, openings, tires and quick commands of one vehicle.",
+        "fr": "Énergie, autonomie, verrouillage, ouvrants, pneus et commandes d'un véhicule.",
+        "de": "Energie, Reichweite, Schloss, Türen, Reifen und Schnellbefehle eines Fahrzeugs.",
+        "es": "Energía, autonomía, cierre, aperturas, neumáticos y órdenes de un vehículo."
+      },
+      "icon": "truck",
+      "action_timeout_seconds": 120,
+      "settings": [
+        {
+          "key": "vehicle",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "de": "Fahrzeug",
+            "es": "Vehículo"
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "key": "vehicle_fleet",
+      "label": {
+        "en": "Ford vehicles",
+        "fr": "Véhicules Ford",
+        "de": "Ford-Fahrzeuge",
+        "es": "Vehículos Ford"
+      },
+      "description": {
+        "en": "Every vehicle of the account: level, range, locks and position.",
+        "fr": "Tous les véhicules du compte : niveau, autonomie, verrouillage et position.",
+        "de": "Alle Fahrzeuge des Kontos: Füllstand, Reichweite, Schloss und Position.",
+        "es": "Todos los vehículos de la cuenta: nivel, autonomía, cierre y posición."
+      },
+      "icon": "list"
+    }
+  ]
+}
