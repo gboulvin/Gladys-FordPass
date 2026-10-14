@@ -24,23 +24,33 @@ kopieren Sie die letzte Adresse von Hand. Das dauert zwei Minuten, einmalig.
 
 1. Öffnen Sie in Gladys den Tab **Konfiguration** der Integration und wählen
    Sie die **Region** Ihres FordPass-Kontos. Speichern.
-2. Öffnen Sie die **Entwicklertools** des Browsers (`F12`, oder
-   `Strg+Umschalt+I` / `Cmd+Option+I` auf dem Mac) und wählen Sie den Tab
-   **Netzwerk**. Lassen Sie ihn geöffnet.
-3. Klicken Sie neben _Ford-Konto_ auf **Verbinden**. Die Ford-Anmeldeseite
-   öffnet sich: Melden Sie sich mit der E-Mail-Adresse und dem Passwort Ihres
-   FordPass-Kontos an (und dem Code, den Ford schickt, falls verlangt).
-4. Die Seite scheint dann endlos zu laden: Das ist normal. Suchen Sie im Tab
-   **Netzwerk** die Anfrage, deren Adresse mit
-   `fordapp://userauthorized/?code=` beginnt (geben Sie `code=` in das
-   Filterfeld ein). Rechtsklick → **Kopieren** → **URL kopieren**. In Firefox
-   erscheint die Adresse eventuell stattdessen in der Konsole als Fehler
-   („Öffnen verhindert“): Kopieren Sie sie von dort.
-5. Führen Sie in Gladys die Aktion **Anmeldung abschließen** aus und fügen
+2. Klicken Sie neben _Ford-Konto_ auf **Verbinden**. Die Ford-Anmeldeseite
+   öffnet sich in einem neuen Tab. Melden Sie sich dort nicht an: Kopieren
+   Sie die Adresse dieser Seite aus der Adressleiste und schließen Sie den
+   Tab.
+3. Öffnen Sie einen neuen Tab, öffnen Sie die **Entwicklertools** des
+   Browsers (`F12`, oder `Strg+Umschalt+I` / `Cmd+Option+I` auf dem Mac),
+   wählen Sie den Tab **Netzwerk** und aktivieren Sie **Log beibehalten**
+   (Firefox: ⚙ → **Logs nicht leeren**). Die Entwicklertools zeichnen nur den
+   Tab auf, in dem sie geöffnet wurden, und die Anmeldung durchläuft mehrere
+   Seiten (darunter die des Bestätigungscodes): Ohne dieses Kästchen wird die
+   Liste unterwegs geleert.
+4. Fügen Sie die kopierte Adresse in die Adressleiste dieses Tabs ein und
+   drücken Sie `Enter`. Melden Sie sich mit der E-Mail-Adresse und dem
+   Passwort Ihres FordPass-Kontos an und geben Sie dann den Bestätigungscode
+   ein, den Ford Ihnen schickt (Zwei-Faktor-Authentifizierung).
+5. Die Seite scheint dann endlos zu laden: Das ist normal. Im Tab
+   **Netzwerk** wird die letzte Anfrage **rot** angezeigt; ihr Initiator ist
+   `authorize?redirect_uri=fordapp://userauthorized&…` und ihre Adresse
+   beginnt mit `fordapp://userauthorized/?code=` (geben Sie `code=` in das
+   Filterfeld ein, um sie zu finden). Rechtsklick → **Kopieren** → **URL
+   kopieren**. In Firefox erscheint die Adresse eventuell stattdessen in der
+   Konsole als Fehler („Öffnen verhindert“): Kopieren Sie sie von dort.
+6. Führen Sie in Gladys die Aktion **Anmeldung abschließen** aus und fügen
    Sie die Adresse ein. Sofort: Der Code ist nur wenige Minuten gültig, und
    die Anmeldung muss innerhalb von 10 Minuten nach dem Klick auf
    **Verbinden** abgeschlossen sein.
-6. Die Antwort listet die gefundenen Fahrzeuge auf. Öffnen Sie den Tab
+7. Die Antwort listet die gefundenen Fahrzeuge auf. Öffnen Sie den Tab
    **Erkennung** und fügen Sie sie hinzu.
 
 Ihr Passwort erreicht Gladys nie: Die Integration erhält nur einen
