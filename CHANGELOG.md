@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.5] - 2026-10-23
+
 ## [1.0.4] - 2026-10-22
 
 ### Security
@@ -65,7 +67,8 @@ the notes of the version's GitHub Release.
   (bar / kPa / psi), low level threshold and language of the feature names.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.1...v1.0.2
