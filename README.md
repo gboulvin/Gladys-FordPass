@@ -10,7 +10,7 @@ FordPass app (lock, unlock, remote start, charging).
 
 - **Cloud** integration (manifest `"transports": ["cloud"]`): Ford exposes no
   local API, everything goes through Ford's servers.
-- Requires **Gladys 5.1.0 or later** (scene triggers, scene actions and
+- Requires **Gladys 5.3.0 or later** (catalog keywords, scene triggers, scene actions and
   dashboard widgets).
 - English, French, German and Spanish.
 
