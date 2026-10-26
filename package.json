@@ -1,6 +1,6 @@
 {
   "name": "gladys-integration-fordpass",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "private": true,
   "description": "Gladys Assistant external integration for Ford vehicles (FordPass connected services).",
   "type": "module",
