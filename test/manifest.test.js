@@ -77,8 +77,8 @@ test('the manifest version is the package version, and the image is tagged with 
   assert.equal(manifest.docker_image, `ghcr.io/gboulvin/gladys-fordpass:${manifest.version}`);
 });
 
-test('scene triggers, scene actions and widgets require Gladys >= 5.1.0', () => {
-  assert.match(manifest.gladys_version, /^>=5\.1\.0/);
+test('scene capabilities, widgets and catalog keywords require Gladys >= 5.3.0', () => {
+  assert.match(manifest.gladys_version, /^>=5\.3\.0/);
 });
 
 test('config_schema defaults stay consistent with DEFAULT_CONFIG', () => {
