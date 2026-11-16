@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-11-16
+
 ### Fixed
 
 - A remote command is no longer reported as unanswered ("TIMEOUT") without a single look at the vehicle when the integration was busy past the deadline: the outcome is always read at least once.
@@ -79,7 +81,8 @@ the notes of the version's GitHub Release.
   (bar / kPa / psi), low level threshold and language of the feature names.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.5...v1.1.0
 [1.0.5]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/gboulvin/Gladys-FordPass/compare/v1.0.3...v1.0.4
