@@ -207,6 +207,20 @@ test('a command the vehicle refuses carries the reason', async () => {
   );
 });
 
+test('the outcome is read at least once, even past the deadline', async () => {
+  const ford = createFakeFord();
+  ford.commandToState = 'COMMAND_FAILED_ON_DEVICE';
+  const sessionStore = memoryStore(validSession());
+  const c = new FordClient({
+    fetch: ford.fetch,
+    getRegion: () => REGIONS.fra,
+    sessionStore,
+    commandPolling: { initialDelayMs: 60, intervalMs: 1, timeoutMs: 50 },
+  });
+  const result = await c.sendCommand(ICE_VIN, 'remote_start');
+  assert.equal(result.status, 'COMMAND_FAILED_ON_DEVICE');
+});
+
 test('a command that never answers times out', async () => {
   const ford = createFakeFord();
   ford.commandToState = 'REQUEST_QUEUED';

@@ -229,7 +229,10 @@ export class FordClient {
     const deadline = Date.now() + timeoutMs;
     await sleep(initialDelayMs);
     let telemetry;
-    while (Date.now() <= deadline) {
+    // Read at least once, even when the initial delay already ran past the
+    // deadline (a busy event loop): a command is never reported unanswered
+    // without a single look at the vehicle.
+    for (let first = true; first || Date.now() <= deadline; first = false) {
       try {
         telemetry = await this.getTelemetry(vin);
         const outcome = commandOutcome(telemetry, type, commandId);
