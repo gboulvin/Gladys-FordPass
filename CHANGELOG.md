@@ -10,6 +10,10 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+### Fixed
+
+- A remote command is no longer reported as unanswered ("TIMEOUT") without a single look at the vehicle when the integration was busy past the deadline: the outcome is always read at least once.
+
 ## [1.1.0] - 2026-10-26
 
 ### Changed
